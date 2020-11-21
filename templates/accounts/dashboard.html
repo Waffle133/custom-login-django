@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<h1>Bienvenido {{ user.first_name }} </h1>
+<div class="">
+    <button type="button" name="button"><a href="{% url 'logout' %}">Logout</a></button>
+    <button type="button" name="button"><a href="{% url 'create_permission' %}">Agregar permiso</a></button>
+    <button type="button" name="button"><a href="{% url 'remove_permission' %}">Remover permiso</a></button>
+</div>
+{% if perms.accounts.can_publish %}
+    <button type="button" name="button"><a href="{% url 'login' %}">Red Button</a></button>
+{% endif %}
+</body>
+</html>
