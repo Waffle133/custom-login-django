@@ -10,9 +10,14 @@
     <button type="button" name="button"><a href="{% url 'logout' %}">Logout</a></button>
     <button type="button" name="button"><a href="{% url 'create_permission' %}">Agregar permiso</a></button>
     <button type="button" name="button"><a href="{% url 'remove_permission' %}">Remover permiso</a></button>
+    {% load user_tags %}
 </div>
+{% if request.user|has_group:"TEST" %}
+    <div> Admins can see everything</div>
+{% endif %}
 {% if perms.accounts.can_publish %}
-    <button type="button" name="button"><a href="{% url 'login' %}">Red Button</a></button>
+    <button type="button" name="button"><a href="{% url 'test' %}">Red Button</a></button>
 {% endif %}
 </body>
 </html>
+

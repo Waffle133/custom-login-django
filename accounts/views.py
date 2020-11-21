@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.views.generic.edit import FormView
 from . import forms
 from django.contrib.auth import login, authenticate, get_user_model
@@ -35,8 +35,16 @@ class SignupView(FormView):
 
 @login_required
 def dashboard(request):
-    """ make dashboard view """
+    if request.user.has_perm('can_publish'):
+        print('sí tiene')
     return render(request, 'accounts/dashboard.html')
+
+
+@login_required
+def test(request):
+    if request.user.has_perm('can_publish'):
+        return redirect('/')
+    return redirect('/')
 
 
 def logout(request):

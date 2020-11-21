@@ -13,3 +13,4 @@ class SignupForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     """user login form"""
     model = get_user_model()
+
