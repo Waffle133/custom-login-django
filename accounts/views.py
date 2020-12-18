@@ -35,8 +35,6 @@ class SignupView(FormView):
 
 @login_required
 def dashboard(request):
-    if request.user.has_perm('can_publish'):
-        print('sí tiene')
     return render(request, 'accounts/dashboard.html')
 
 
